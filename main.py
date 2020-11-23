@@ -1,4 +1,4 @@
-#Simplify code
+#Simplify Code
 import pandas as pd  
 import numpy as np  
 import matplotlib.pyplot as plt  
@@ -9,17 +9,17 @@ import scipy.stats as stats
 from sklearn.model_selection import train_test_split 
 from sklearn.linear_model import LinearRegression
 from sklearn import metrics
-from scipy.stats import shapiro
 from sklearn.datasets import make_classification
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import RepeatedStratifiedKFold
 from sklearn.linear_model import LogisticRegression
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from numpy import mean
-from numpy import std
 from mlxtend.evaluate import paired_ttest_5x2cv
 from mlxtend.preprocessing import standardize
 from mlxtend.feature_extraction import LinearDiscriminantAnalysis as lda
+#from numpy import mean
+#from numpy import std
+#from scipy.stats import shapiro
 
 
 dataset1 = pd.read_csv('weather.csv')
@@ -28,16 +28,18 @@ dataset=dataset1.sample(1000)
 print(dataset.shape)
 print(dataset.describe())
 print(dataset.info())
-dataset.plot(x='Temp_Min', y='Temp_Max', style='o')
 
+dataset.plot(x='Temp_Min', y='Temp_Max', style='o')
 plt.title('Temp_Min vs Temp_Max')  
 plt.xlabel('Temp_Min')  
 plt.ylabel('Temp_Max')  
 plt.show()
+
 plt.figure(figsize=(15,10))
 plt.tight_layout()
 seabornInstance.distplot(dataset['Temp_Max'])
 plt.show()
+
 X = dataset['Temp_Min'].values.reshape(-1,1)
 y = dataset['Temp_Max'].values.reshape(-1,1)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
@@ -49,7 +51,7 @@ print(regressor.intercept_)
 print(regressor.coef_)
 y_pred = regressor.predict(X_test)
 
-df = pd.DataFrame({'Actuelle(Mesurées)': y_test.flatten(), 'Prédiction(modèle)': y_pred.flatten()})
+df = pd.DataFrame({'Actuelle(Mesurées)': y_test.flatten(), 'Prédiction(modèle)': y_pred.flatten()}) #use of pandas
 print(df)
 
 df1 = df.head(25)
@@ -64,6 +66,7 @@ plt.ylabel('Temp_Max')
 plt.scatter(X_test, y_test,  color='gray')
 plt.plot(X_test, y_pred, color='red', linewidth=2)
 plt.show()
+
 print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))  
 print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))  
 print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
@@ -93,7 +96,7 @@ plt.hist(Means, bins=int(10), histtype='step')
 plt.show()
 
 
-stat, p = shapiro(Means)
+stat, p = stats.shapiro(Means)
 print('Statistics={}, p={}'.format(stat, p))
 alpha = 0.05
 if p > alpha:
@@ -112,9 +115,8 @@ stats.probplot(Means, dist="norm", plot=pylab)
 pylab.show()
 #sm.qqplot(Means, line ='45') 
 #pylab.show()
-##########################################################
 
-###################################################################
+
 X, y = make_classification(n_samples=100, n_features=10, n_informative=10, n_redundant=0, random_state=1)
 # summarize the dataset
 #print(X.shape, y.shape)
@@ -122,17 +124,17 @@ X, y = make_classification(n_samples=100, n_features=10, n_informative=10, n_red
 model1 = LogisticRegression()
 cv1 = RepeatedStratifiedKFold(n_splits=2, n_repeats=5, random_state=1)
 scores1 = cross_val_score(model1, X, y, scoring='accuracy', cv=cv1, n_jobs=-1)
-print('LogisticRegression Mean Accuracy: %.3f (%.3f)' % (mean(scores1), std(scores1)))
+print('LogisticRegression Mean Accuracy: %.3f (%.3f)' % (np.mean(scores1), np.std(scores1)))
 # evaluate model 2
 model2 = LinearDiscriminantAnalysis()
 cv2 = RepeatedStratifiedKFold(n_splits=2, n_repeats=5, random_state=1)
 scores2 = cross_val_score(model2, X, y, scoring='accuracy', cv=cv2, n_jobs=-1)
-print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (mean(scores2), std(scores2)))
+print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (np.mean(scores2), np.std(scores2)))
 # plot the results
 plt.boxplot([scores1, scores2], labels=['LR', 'LDA'], showmeans=True)
 plt.show()
 
-print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (mean(scores2), std(scores2)))
+#print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (mean(scores2), std(scores2)))
 # check if difference between algorithms is real
 t, p = paired_ttest_5x2cv(estimator1=model1, estimator2=model2, X=X, y=y, scoring='accuracy', random_seed=1)
 # summarize
