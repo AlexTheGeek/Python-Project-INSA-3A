@@ -17,9 +17,6 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from mlxtend.evaluate import paired_ttest_5x2cv
 from mlxtend.preprocessing import standardize
 from mlxtend.feature_extraction import LinearDiscriminantAnalysis as lda
-#from numpy import mean
-#from numpy import std
-#from scipy.stats import shapiro
 
 
 dataset1 = pd.read_csv('weather.csv')
