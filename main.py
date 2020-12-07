@@ -1,3 +1,4 @@
+#!/usr/bin/pyton3
 #Simplify Code
 import pandas as pd  
 import numpy as np  
@@ -21,6 +22,7 @@ from mlxtend.feature_extraction import LinearDiscriminantAnalysis as lda
 #from numpy import std
 #from scipy.stats import shapiro
 
+print("\n  _____           _      _     __  __       _   _           ____          \n |  __ \         (_)    | |   |  \/  |     | | | |         |___ \   /\    \n | |__) | __ ___  _  ___| |_  | \  / | __ _| |_| |__  ___    __) | /  \   \n |  ___/ '__/ _ \| |/ _ \ __| | |\/| |/ _` | __| '_ \/ __|  |__ < / /\ \  \n | |   | | | (_) | |  __/ |_  | |  | | (_| | |_| | | \__ \  ___) / ____ \ \n |_|   |_|  \___/| |\___|\__| |_|  |_|\__,_|\__|_| |_|___/ |____/_/    \_\ \n                _/ |                                                      \n               |__/                                                       \n\n")
 
 dataset1 = pd.read_csv('weather.csv')
 dataset1.sample()
@@ -167,3 +169,6 @@ with plt.style.context('seaborn-whitegrid'):
     plt.legend(loc='lower right')
     plt.tight_layout()
     plt.show()
+
+
+print("\n  _____   ____                ____   \n |  __ \ |  _ \       /\     |  _ \  \n | |  | || |_) |     /  \    | |_) | \n | |  | ||  _ <     / /\ \   |  _ <  \n | |__| || |_) |   / ____ \ _| |_) | \n |_____(_)____(_) /_/    \_(_)____(_)\n                                     \n")
