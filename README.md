@@ -1,4 +1,4 @@
-# Python Project - INSA 3A
+# Python Project - 3rd year INSA CVL
 
 [Wiki](https://github.com/AlexTheGeek/Projet-Python-INSA-3A/wiki)  
 [Documentation]()  
