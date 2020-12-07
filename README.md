@@ -4,7 +4,7 @@
 
 
 ## Membres du Groupe :
-Damien Briquet et Alexis Brunet
+[Damien Briquet](https://github.com/DamingoPy) et [Alexis Brunet](https://github.com/AlexTheGeek)
 
 ## Contact :
 contact[at]lapinfo[dot]ovh
