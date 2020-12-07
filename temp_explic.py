@@ -65,7 +65,7 @@ print(df)                                                                       
 
 
 ###
-#
+#Création du graphique à barre verticale montrant la répartitions des températures mesurées et prédites.
 ###
 df1 = df.head(25)                                                       #Recuperation des 25 dernières lignes de df pour les mettre dans df1
 df1.plot(kind='bar',figsize=(16,10))                                    #Création de DataFrame, de taille 16inch de largeur et 10inch de hauteur, et le style du graphique sera des barres verticales
