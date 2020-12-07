@@ -5,3 +5,6 @@
 
 ## Membres du Groupe :
 Damien Briquet et Alexis Brunet
+
+## Contact :
+contact[at]lapinfo[dot]ovh
