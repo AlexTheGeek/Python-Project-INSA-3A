@@ -161,6 +161,9 @@ plt.boxplot([scores1, scores2], labels=['LR', 'LDA'], showmeans=True)
 plt.show() #Affichage du graphique/figure
 #print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (mean(scores2), std(scores2)))
 # check if difference between algorithms is real
+###
+#
+###
 t, p = paired_ttest_5x2cv(estimator1=model1, estimator2=model2, X=X, y=y, scoring='accuracy', random_seed=1)
 # summarize
 print('P-value: %.3f, t-Statistic: %.3f' % (p, t))
