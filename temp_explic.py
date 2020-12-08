@@ -152,6 +152,10 @@ model2 = LinearDiscriminantAnalysis()
 cv2 = RepeatedStratifiedKFold(n_splits=2, n_repeats=5, random_state=1)
 scores2 = cross_val_score(model2, X, y, scoring='accuracy', cv=cv2, n_jobs=-1)
 print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (np.mean(scores2), np.std(scores2)))
+
+###
+#
+###
 # plot the results
 plt.boxplot([scores1, scores2], labels=['LR', 'LDA'], showmeans=True)
 plt.show() #Affichage du graphique/figure
