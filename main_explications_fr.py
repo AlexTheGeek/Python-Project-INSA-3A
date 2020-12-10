@@ -124,9 +124,9 @@ else:
 
 
 ###
-#Diagramme en boites et en moutaches. La boîte s'étend des valeurs du quartile inférieur au quartile supérieur des données, avec une ligne à la médiane. Les moustaches s'étendent à partir de la boîte pour montrer l'étendue des données. Les points de vol sont ceux qui se trouvent après l'extrémité des moustaches.
+#Diagramme boite à moustaches. La boîte s'étend des valeurs du quartile inférieur au quartile supérieur des données, avec une ligne à la médiane. Les moustaches s'étendent à partir de la boîte pour montrer l'étendue des données. Les points de vol sont ceux qui se trouvent après l'extrémité des moustaches.
 ###
-plt.boxplot(Means)  #Creation d'un diagramme en boites et en moutaches de Means
+plt.boxplot(Means)  #Creation d'un diagramme boite à moustaches de Means
 plt.show()          #Affichage du graphique/figure
 
 ###
@@ -157,8 +157,8 @@ print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (np.mean(scores2
 #
 ###
 # plot the results
-plt.boxplot([scores1, scores2], labels=['LR', 'LDA'], showmeans=True)
-plt.show() #Affichage du graphique/figure
+plt.boxplot([scores1, scores2], labels=['LR', 'LDA'], showmeans=True)           #Creation d'un diagramme boite à moustaches à partir de scores1 et scores2
+plt.show()                                                                      #Affichage du graphique/figure
 #print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (mean(scores2), std(scores2)))
 # check if difference between algorithms is real
 ###
