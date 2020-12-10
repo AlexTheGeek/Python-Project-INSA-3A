@@ -164,14 +164,14 @@ plt.show()                                                                      
 ###
 #
 ###
-t, p = paired_ttest_5x2cv(estimator1=model1, estimator2=model2, X=X, y=y, scoring='accuracy', random_seed=1)
+t, p = paired_ttest_5x2cv(estimator1=model1, estimator2=model2, X=X, y=y, scoring='accuracy', random_seed=1) #initialisation du couple de valeur t et p
 # summarize
-print('P-value: %.3f, t-Statistic: %.3f' % (p, t))
+print('P-value: %.3f, t-Statistic: %.3f' % (p, t))                                                           #affichage de la p-Value et de t-Statistic initialisé ci-dessus
 # interpret the result
-if p <= 0.05:
-	print('Difference between mean performance is probably real')
+if p <= 0.05:                                                                                                #test de la valeur de la variable p
+	print('Difference between mean performance is probably real')                                        #affichage si p<=0.05
 else:
-	print('Algorithms probably have the same performance')
+	print('Algorithms probably have the same performance')                                               #affichage si p>0.05
 
 
 ###
