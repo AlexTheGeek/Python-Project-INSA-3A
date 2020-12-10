@@ -137,21 +137,21 @@ pylab.show()                                    #Affichage du graphique/figure
 
 
 ###
-#
+#Ecriture par deux manières différentes du calcul du coefficient de regression linéaire
 ###
-X, y = make_classification(n_samples=100, n_features=10, n_informative=10, n_redundant=0, random_state=1)
+X, y = make_classification(n_samples=100, n_features=10, n_informative=10, n_redundant=0, random_state=1) #paramètrage du nuage de points
 # summarize the dataset
 #print(X.shape, y.shape)
 # evaluate model 1
-model1 = LogisticRegression()
-cv1 = RepeatedStratifiedKFold(n_splits=2, n_repeats=5, random_state=1)
-scores1 = cross_val_score(model1, X, y, scoring='accuracy', cv=cv1, n_jobs=-1)
-print('LogisticRegression Mean Accuracy: %.3f (%.3f)' % (np.mean(scores1), np.std(scores1)))
-# evaluate model 2
-model2 = LinearDiscriminantAnalysis()
-cv2 = RepeatedStratifiedKFold(n_splits=2, n_repeats=5, random_state=1)
-scores2 = cross_val_score(model2, X, y, scoring='accuracy', cv=cv2, n_jobs=-1)
-print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (np.mean(scores2), np.std(scores2)))
+model1 = LogisticRegression()                                                                             #initialisation de l'évaluation du modèle 1 par la fonction LogisticRegression()
+cv1 = RepeatedStratifiedKFold(n_splits=2, n_repeats=5, random_state=1)                                    #Paramétrage de la variable cv1   
+scores1 = cross_val_score(model1, X, y, scoring='accuracy', cv=cv1, n_jobs=-1)                            #Paramétrage de la variable scores1
+print('LogisticRegression Mean Accuracy: %.3f (%.3f)' % (np.mean(scores1), np.std(scores1)))              #affichage du coefficient de regression linéaire moyen pour le modèle 1
+# evaluate model 2    
+model2 = LinearDiscriminantAnalysis()                                                                     #initialisation de l'évaluation du modèle 2 par la fonction 
+cv2 = RepeatedStratifiedKFold(n_splits=2, n_repeats=5, random_state=1)                                    #Paramétrage de la variable cv2
+scores2 = cross_val_score(model2, X, y, scoring='accuracy', cv=cv2, n_jobs=-1)                            #Paramétrage de la variable scores2
+print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (np.mean(scores2), np.std(scores2)))      #affichage du coefficient de regression linéaire moyen pour le modèle 2 
 
 ###
 #
