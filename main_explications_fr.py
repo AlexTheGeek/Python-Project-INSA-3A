@@ -45,7 +45,7 @@ plt.show()                                          #Affichage du graphique/figu
 #Creation d'un graphique histogramme pour visualiser la répartion des valeur de Temp_Max du DataFrame
 ###
 plt.figure(figsize=(15,10))                     #Creation d'un figure de taille definie par figsize en inch, 15 inch de largeur et 10 de hauteur
-plt.tight_layout()                              #Ajustement des bordures entre et autour les sous trace
+plt.tight_layout()                              #Ajustement des bordures entre et autour les sous traces
 seabornInstance.distplot(dataset['Temp_Max'])   #Permet de dessiner un trace de distribution sur une FacetGrid, permettant de visualiser les donnees de DateFrame des Temp_Max dans un format d'histogramme (par defaut)
 plt.show()                                      #Affichage du graphique/figure
 
@@ -56,7 +56,7 @@ X = dataset['Temp_Min'].values.reshape(-1,1)                                    
 y = dataset['Temp_Max'].values.reshape(-1,1)                                                        #La valeur y includ l'attribut Temp_Max
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)            #Attribution de 80% des donnees a l'ensemble de formation et le reste a l'ensemble de test
 regressor = LinearRegression()                                                                      #Creation un objet de regression lineaire  
-regressor.fit(X_train, y_train)                                                                     #Entrainement du model en utilisant l'ensemble de formation
+regressor.fit(X_train, y_train)                                                                     #Entrainement du modèle en utilisant l'ensemble de formation
 print(regressor.intercept_)                                                                         #Affichage de l'intersection 
 print(regressor.coef_)                                                                              #Affichage du coefficient directeur de la droite de regression
 y_pred = regressor.predict(X_test)                                                                  #Utilisation des donnees de test pour faire des predictions sur le Temp_Max
@@ -154,41 +154,39 @@ scores2 = cross_val_score(model2, X, y, scoring='accuracy', cv=cv2, n_jobs=-1)  
 print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (np.mean(scores2), np.std(scores2)))      #affichage du coefficient de regression linéaire moyen pour le modèle 2 
 
 ###
-#
+#Création du diagramme boite à moustaches
 ###
 # plot the results
 plt.boxplot([scores1, scores2], labels=['LR', 'LDA'], showmeans=True)           #Creation d'un diagramme boite à moustaches à partir de scores1 et scores2
 plt.show()                                                                      #Affichage du graphique/figure
-#print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (mean(scores2), std(scores2)))
-# check if difference between algorithms is real
+
+
 ###
-#
+#Détermination de la P-value et de T-stastitic pour faire un test entre les deux modèles
 ###
 t, p = paired_ttest_5x2cv(estimator1=model1, estimator2=model2, X=X, y=y, scoring='accuracy', random_seed=1) #initialisation du couple de valeur t et p
-# summarize
 print('P-value: %.3f, t-Statistic: %.3f' % (p, t))                                                           #affichage de la p-Value et de t-Statistic initialisé ci-dessus
-# interpret the result
 if p <= 0.05:                                                                                                #test de la valeur de la variable p
-	print('Difference between mean performance is probably real')                                        #affichage si p<=0.05
+	print('Difference between mean performance is probably real')                                            #affichage si p<=0.05
 else:
-	print('Algorithms probably have the same performance')                                               #affichage si p>0.05
+	print('Algorithms probably have the same performance')                                                   #affichage si p>0.05
 
 
 ###
-#
+#Analyse du discriminant
 ###
-X = standardize(X)
-lda = lda(n_discriminants=2)
-lda.fit(X, y)
-X_lda = lda.transform(X)
-plt.figure(figsize=(6, 4))
-for lab, col in zip((0, 1),('blue', 'red')):
-    plt.scatter(X_lda[y == lab, 0],X_lda[y == lab, 1],label=lab,c=col)
-plt.xlabel('Linear Discriminant 1')
-plt.ylabel('Linear Discriminant 2')
-plt.legend(loc='lower right')
-plt.tight_layout()
-plt.show() #Affichage du graphique/figure
+X = standardize(X)                                                      #Lissage de la variable X
+lda = lda(n_discriminants=2)                                            #initialisation du discriminant
+lda.fit(X, y)                                                           #Entrainement du modèle en utilisant l'ensemble de formation
+X_lda = lda.transform(X)                                                #Transforme les valeurs pour qu'elles soient utilisable par les fonctions d'après
+plt.figure(figsize=(6, 4))                                              #Creation d'un figure avec une certaine taille précisé en argument
+for lab, col in zip((0, 1),('blue', 'red')):                            #boucle pour tracer le nuage de point en fonction de la ligne et de la colonne
+    plt.scatter(X_lda[y == lab, 0],X_lda[y == lab, 1],label=lab,c=col)  #tracage du nuage de point
+plt.xlabel('Linear Discriminant 1')                                     #Paramètrage du titre de l'axe X
+plt.ylabel('Linear Discriminant 2')                                     #Paramètrage du titre de l'axe Y
+plt.legend(loc='lower right')                                           #Paramètrage de la légende située en bas à droite
+plt.tight_layout()                                                      #Ajustement des bordures entre et autour les sous traces
+plt.show()                                                              #Affichage du graphique/figure
 
 
 print("\n  _____   ____                ____   \n |  __ \ |  _ \       /\     |  _ \  \n | |  | || |_) |     /  \    | |_) | \n | |  | ||  _ <     / /\ \   |  _ <  \n | |__| || |_) |   / ____ \ _| |_) | \n |_____(_)____(_) /_/    \_(_)____(_)\n                                     \n")
