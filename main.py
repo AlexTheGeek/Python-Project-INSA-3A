@@ -27,7 +27,7 @@ dataset1.sample()
 dataset=dataset1.sample(1000) 
 print(dataset.shape) 
 print(dataset.describe()) 
-print(dataset.info()) 
+dataset.info()
 
 dataset.plot(x='Temp_Min', y='Temp_Max', style='o')
 plt.title('Temp_Min vs Temp_Max')  
