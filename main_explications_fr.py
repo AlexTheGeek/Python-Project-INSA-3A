@@ -30,7 +30,7 @@ dataset1.sample()                       #Génération d'un échantillon aléatoi
 dataset=dataset1.sample(1000)           #Un nouvel DataFrame (dataset) contenenant 1000 éléments échantillonnés de façon aléatoire à partir de dataset1
 print(dataset.shape)                    #Affichage d'un tuple représentant la dimension du DataFrame dataset
 print(dataset.describe())               #Affichage des statistiques pour chaque type de valeurs du DataFrame
-print(dataset.info())                   #Affichage des informations sur le DataFrame, notamment l'index dtype et les colonnnes et les valeurs non nulles et l'utilisation de la mémoire
+dataset.info()                   #Affichage des informations sur le DataFrame, notamment l'index dtype et les colonnnes et les valeurs non nulles et l'utilisation de la mémoire
 
 ###
 #Affichage de la répartition des temperatures en fonction des températures min et températures max, dans un graphique en nuage de points
