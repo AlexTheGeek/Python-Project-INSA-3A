@@ -5,7 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt  
 import seaborn as seabornInstance 
 import csv
-import pylab
 import scipy.stats as stats
 from sklearn.model_selection import train_test_split 
 from sklearn.linear_model import LinearRegression
@@ -17,7 +16,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from mlxtend.evaluate import paired_ttest_5x2cv
 from mlxtend.preprocessing import standardize
-from mlxtend.feature_extraction import LinearDiscriminantAnalysis as lda
+from mlxtend.feature_extraction import LinearDiscriminantAnalysis as ldaf
 from function import fonction
 
 print("\n  _____           _      _     __  __       _   _           ____          \n |  __ \         (_)    | |   |  \/  |     | | | |         |___ \   /\    \n | |__) | __ ___  _  ___| |_  | \  / | __ _| |_| |__  ___    __) | /  \   \n |  ___/ '__/ _ \| |/ _ \ __| | |\/| |/ _` | __| '_ \/ __|  |__ < / /\ \  \n | |   | | | (_) | |  __/ |_  | |  | | (_| | |_| | | \__ \  ___) / ____ \ \n |_|   |_|  \___/| |\___|\__| |_|  |_|\__,_|\__|_| |_|___/ |____/_/    \_\ \n                _/ |                                                      \n               |__/                                                       \n\n")
@@ -27,7 +26,7 @@ dataset1.sample()
 dataset=dataset1.sample(1000) 
 print(dataset.shape) 
 print(dataset.describe()) 
-print(dataset.info()) 
+dataset.info()
 
 dataset.plot(x='Temp_Min', y='Temp_Max', style='o')
 plt.title('Temp_Min vs Temp_Max')  
@@ -43,11 +42,10 @@ plt.show()
 X = dataset['Temp_Min'].values.reshape(-1,1)
 y = dataset['Temp_Max'].values.reshape(-1,1)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-regressor = LinearRegression()  
-regressor.fit(X_train, y_train)
-print(regressor.intercept_)
-print(regressor.coef_)
-y_pred = regressor.predict(X_test)
+reg = LinearRegression().fit(X_train, y_train)
+print(reg.intercept_)
+print(reg.coef_)
+y_pred = reg.predict(X_test)
 df = pd.DataFrame({'Actuelle(Mesurées)': y_test.flatten(), 'Prédiction(modèle)': y_pred.flatten()}) #use of pandas
 print(df)
 
@@ -78,7 +76,7 @@ print(np.std(Means))
 print(np.std(dataset['Temp_Min']))
 
 plt.figure(1)
-plt.hist(Means, bins=int(10), histtype='step')
+plt.hist(Means, bins=10, histtype='step')
 plt.show()
 
 
@@ -96,8 +94,8 @@ plt.show()
 
 
 
-stats.probplot(Means, dist="norm", plot=pylab)
-pylab.show()
+stats.probplot(Means, plot=plt)
+plt.show()
 
 
 
@@ -124,9 +122,9 @@ else:
 
 
 
-X = standardize(X)
+X = standardize(X)  
 
-lda = lda(n_discriminants=2)
+lda = ldaf(n_discriminants=2)
 lda.fit(X, y)
 X_lda = lda.transform(X)
 plt.figure(figsize=(6, 4))
