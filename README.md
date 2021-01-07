@@ -1,7 +1,6 @@
 # Python Project - 3rd year INSA CVL
 
-[Wiki](https://github.com/AlexTheGeek/Projet-Python-INSA-3A/wiki)  
-[Documentation]()  
+[Documentation](https://alexthegeek.github.io/Python-Project-INSA-3A/)  
 
 ## Group Members :
 [Damien Briquet](https://github.com/DamingoPy) and [Alexis Brunet](https://github.com/AlexTheGeek)
