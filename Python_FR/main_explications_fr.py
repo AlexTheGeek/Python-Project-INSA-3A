@@ -26,7 +26,7 @@ print("\n  _____           _      _     __  __       _   _           ____       
 ###
 dataset1 = pd.read_csv('weather.csv')   #Lecture d'un fichier (csv) de valeurs séparées par des virgules dans un DataFrame
 dataset1.sample()                       #Génération d'un échantillon aléatoire de chaque groupe d'un objet du DataFrame
-dataset=dataset1.sample(1000)           #Un nouvel DataFrame (dataset) contenenant 1000 élèments échantillonnés de façon aléatoire à partir de dataset1
+dataset=dataset1.sample(1000)           #Un nouvel DataFrame (dataset) contenant 1000 élèments échantillonnés de façon aléatoire à partir de dataset1
 print(dataset.shape)                    #Affichage d'un tuple représentant la dimension du DataFrame dataset
 print(dataset.describe())               #Affichage des statistiques pour chaque type de valeurs du DataFrame
 dataset.info()                          #Affichage des informations sur le DataFrame, notamment l'index dtype, les colonnnes et les valeurs non nulles et l'utilisation de la mémoire
