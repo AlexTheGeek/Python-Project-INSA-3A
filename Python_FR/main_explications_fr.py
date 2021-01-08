@@ -104,7 +104,7 @@ print(np.std(dataset['Temp_Min']))                  #Affiche l'écart-type des v
 ###
 #Création d'un histogramme en escalier
 ###
-plt.figure(1)                                   #Création d'une figure avec un unique identifiant égale à 1
+plt.figure(1)                                   #Création d'une figure avec un unique identifiant égal à 1
 plt.hist(Means, bins=10, histtype='step')       #Création d'un histogramme en escalier avec un seul trait et sans remplissage, avec 10 marches ayant la même largeur
 plt.show()                                      #Affichage du graphique/figure
 
@@ -158,7 +158,7 @@ plt.show()                                                                      
 ###
 #Détermination de la P-value et de T-stastitic pour faire un test entre les deux modèles
 ###
-t, p = paired_ttest_5x2cv(estimator1=model1, estimator2=model2, X=X, y=y, scoring='accuracy', random_seed=1) #Initialisation du couple de valeur t et p
+t, p = paired_ttest_5x2cv(estimator1=model1, estimator2=model2, X=X, y=y, scoring='accuracy', random_seed=1) #Initialisation du couple de valeurs t et p
 print('P-value: %.3f, t-Statistic: %.3f' % (p, t))                                                           #Affichage de la p-Value et de t-Statistic initialisées ci-dessus
 if p <= 0.05:                                                                                                #Test de la valeur de la variable p
 	print('Difference between mean performance is probably real')                                        #Affichage si p<=0.05
