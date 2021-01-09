@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Explication du code - Python Project 3A</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Explication du code";
+    var mkdocs_page_input_path = "FR/code.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Python Project 3A</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">English</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../EN/">Home</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../EN/objectif/">Objectives</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../EN/python/">Python</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../EN/ide/">IDE</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../EN/dependances/">Dependencies</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../EN/launch/">The program</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../EN/code/">Code explanation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../EN/function/">Functions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../EN/sources/">Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Français</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Accueil</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../objectif/">Objectifs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../python/">Python</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ide/">IDE</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../dependances/">Dépendances</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../launch/">Le programme</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Explication du code</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-1-initialisation-dun-dataframe-a-partir-dun-fichier-csv">Bloc 1 : initialisation d'un DataFrame à partir d'un fichier csv</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-2-graphique-en-nuage-de-points-de-la-repartition-des-temperatures">Bloc 2 : graphique en nuage de points de la répartition des températures</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-3-graphique-en-histogramme-de-la-repartition-des-temperatures-max">Bloc 3 : graphique en histogramme de la répartition des températures Max</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-4-initialisation-de-la-prediction">Bloc 4 : initialisation de la prédiction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-5-graphique-a-barres-verticales-de-la-repartition-des-valeurs-predites-et-mesurees">Bloc 5 : graphique à barres verticales de la répartition des valeurs prédites et mesurées</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-6-graphique-de-la-droite-de-regression">Bloc 6 : graphique de la droite de régression</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-7-quelques-valeurs-de-la-prediction">Bloc 7 : quelques valeurs de la prédiction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-8-statistique-dun-tableau-de-moyenne">Bloc 8 : statistique d'un tableau de moyenne</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#bloc-de-la-fonction-associee">Bloc de la fonction associée</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-9-diagramme-en-escalier">Bloc 9 : diagramme en escalier</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-10-test-de-shapiro-wilk">Bloc 10 : test de Shapiro-Wilk</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-11-boite-a-moustaches">Bloc 11 : boite à moustaches</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-12-courbe-de-probabilite">Bloc 12 : courbe de probabilité</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-13-coefficient-de-regression">Bloc 13 : coefficient de régression</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-14-diagramme-boite-a-moustaches">Bloc 14 : diagramme boite à moustaches</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-15-test-entre-les-deux-modeles">Bloc 15 : test entre les deux modèles</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bloc-16-discriminant">Bloc 16 : discriminant</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../function/">Les fonctions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../sources/">Sources</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Python Project 3A</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Français &raquo;</li>
+        
+      
+    
+    <li>Explication du code</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="explication-du-code">Explication du code</h1>
+<p>Dans cette partie nous allons expliquer les différentes actions faites par le programmes, par des blocs de lignes de code. Pour présenterons ainsi une sortie possible grâce à ces lignes. Vous pouvez aussi retrouver le code complet annoté à à cette adresse pour le <a href="https://github.com/AlexTheGeek/Python-Project-INSA-3A/blob/doc/Python_FR/main_explications_fr.py">main</a> et la <a href="https://github.com/AlexTheGeek/Python-Project-INSA-3A/blob/doc/Python_FR/function_explications_fr.py">fonction</a>.<br />
+Tout d'abord notre programme est composé de deux scripts Python :<br />
+    - main.py : contenant le corps du programme (script python à exécuter pour lancer le programme)<br />
+    - function.py : contenant la fonction utilisé dans main.py  </p>
+<h2 id="bloc-1-initialisation-dun-dataframe-a-partir-dun-fichier-csv">Bloc 1 : initialisation d'un DataFrame à partir d'un fichier csv</h2>
+<p>Récupération des données séparées par des virgules à partir d'un fichier csv pour générer un échantillon de manière aléatoire, et ainsi afficher des informations sur ce DataFrame (dimension, statistique, utilisation mémoire, valeurs non nulles, colonnes, index dtype, ...).    </p>
+<pre><code class="language-python">dataset1 = pd.read_csv('weather.csv')   #Lecture d'un fichier (csv) de valeurs séparées par des virgules dans un DataFrame
+dataset1.sample()                       #Génération d'un échantillon aléatoire de chaque groupe d'un objet du DataFrame
+dataset=dataset1.sample(1000)           #Un nouvel DataFrame (dataset) contenant 1000 élèments échantillonnés de façon aléatoire à partir de dataset1
+print(dataset.shape)                    #Affichage d'un tuple représentant la dimension du DataFrame dataset
+print(dataset.describe())               #Affichage des statistiques pour chaque type de valeurs du DataFrame
+dataset.info()                          #Affichage des informations sur le DataFrame, notamment l'index dtype, les colonnnes et les valeurs non nulles et l'utilisation de la mémoire
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 1" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_1.png" /></p>
+<h2 id="bloc-2-graphique-en-nuage-de-points-de-la-repartition-des-temperatures">Bloc 2 : graphique en nuage de points de la répartition des températures</h2>
+<p>Affichage de la répartition des températures en fonction des températures minimales et températures maximales, dans un graphique en nuage de points.  </p>
+<pre><code class="language-python">dataset.plot(x='Temp_Min', y='Temp_Max', style='o') #Création d'un tracé de DataFrame, avec l'axe x représentant les Temp_min et l'axe y représentant les Temp_Max, dans un style de nuage de points
+plt.title('Temp_Min vs Temp_Max')                   #Paramétrage du titre du graphique
+plt.xlabel('Temp_Min')                              #Paramétrage du titre de l'axe x
+plt.ylabel('Temp_Max')                              #Paramétrage du titre de l'axe y
+plt.show()                                          #Affichage du graphique/figure
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 2" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_2.png" />  </p>
+<h2 id="bloc-3-graphique-en-histogramme-de-la-repartition-des-temperatures-max">Bloc 3 : graphique en histogramme de la répartition des températures Max</h2>
+<p>Création d'un graphique histogramme pour visualiser la répartion des valeurs de Temp_Max du DataFrame.  </p>
+<pre><code class="language-python">plt.figure(figsize=(15,10))                     #Création d'une figure de taille définie par figsize en inch, 15 inch de largeur et 10 de hauteur
+plt.tight_layout()                              #Ajustement des bordures entre et autour des sous traces
+seabornInstance.distplot(dataset['Temp_Max'])   #Permet de dessiner un tracé de distribution sur une FacetGrid, permettant de visualiser les données de DataFrame des Temp_Max dans un format d'histogramme (par défaut)
+plt.show()                                      #Affichage du graphique/figure
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 3" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_3.png" /></p>
+<h2 id="bloc-4-initialisation-de-la-prediction">Bloc 4 : initialisation de la prédiction</h2>
+<p>Prédiction des Temp_Max à partir du fichier précèdent.  </p>
+<pre><code class="language-python">X = dataset['Temp_Min'].values.reshape(-1,1)                                                        #La valeur X inclut l'attribut Temp_Min
+y = dataset['Temp_Max'].values.reshape(-1,1)                                                        #La valeur y inclut l'attribut Temp_Max
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)            #Attribution de 80% des données à l'ensemble de formation et le reste à l'ensemble de test
+reg = LinearRegression().fit(X_train, y_train)                                                      #Entrainement du modéle en utilisant l'ensemble de formation
+print(reg.intercept_)                                                                               #Affichage de l'intersection 
+print(reg.coef_)                                                                                    #Affichage du coefficient directeur de la droite de régression
+y_pred = reg.predict(X_test)                                                                        #Utilisation des données de test pour faire des prédictions sur le Temp_Max
+df = pd.DataFrame({'Actuelle(Mesurées)': y_test.flatten(), 'Prédiction(modèle)': y_pred.flatten()}) #Construction d'un DataFrame à partir des données prédites et de tests
+print(df)                                                                                           #Affichage de DataFrame
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 4" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_5.png" /></p>
+<h2 id="bloc-5-graphique-a-barres-verticales-de-la-repartition-des-valeurs-predites-et-mesurees">Bloc 5 : graphique à barres verticales de la répartition des valeurs prédites et mesurées</h2>
+<p>Création du graphique à barres verticales montrant la répartitions des températures mesurées et prédites.  </p>
+<pre><code class="language-python">df1 = df.head(25)                                                       #Récupération des 25 premières lignes de df pour les mettre dans df1
+df1.plot(kind='bar',figsize=(16,10))                                    #Création de DataFrame, de taille 16inch de largeur et 10inch de hauteur, et le style du graphique sera des barres verticales
+plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')  #Création de la grille interne (major) du graphique avec un style de trait plein, épaisseur de 0.5points, une couleur verte
+plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')  #Création du cadre (minor) du graphique avec un style de trait à point, épaisseur de 0.5points, une couleur noire
+plt.show()                                                              #Affichage du graphique/figure
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 5" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_6.png" /></p>
+<h2 id="bloc-6-graphique-de-la-droite-de-regression">Bloc 6 : graphique de la droite de régression</h2>
+<p>Création d'un graphique de dispersion en gris avec la droite de régression en rouge calculée précèdemment</p>
+<pre><code class="language-python">plt.title('Modèle ax+y')                            #Paramétrage du titre du graphique
+plt.xlabel('Temp_Min')                              #Paramétrage du titre de l'axe x
+plt.ylabel('Temp_Max')                              #Paramétrage du titre de l'axe y
+plt.scatter(X_test, y_test,  color='gray')          #Création d'un diagramme de dispersion y_test par rapport à X_test de couleur grise
+plt.plot(X_test, y_pred, color='red', linewidth=2)  #Création d'un tracé (de la fonction ax+y) de DataFrame, avec l'axe x représentant les X_Test et l'axe y représentant les y_pred, dans la couleur rouge et de largeur 2points
+plt.show()                                          #Affichage du graphique/figure
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 6" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_7.png" /></p>
+<h2 id="bloc-7-quelques-valeurs-de-la-prediction">Bloc 7 : quelques valeurs de la prédiction</h2>
+<p>Affiche des valeurs en fonction des prédictions</p>
+<pre><code class="language-python">print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))              #Affichage du calcul des valeurs absolues moyennes des erreurs   
+print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))                #Affichage du calcul de la moyenne des erreurs au carré
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))  #Affichage du calcul de la racine carrée de la moyenne des erreurs quadratiques
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 7" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_8-1.png" /></p>
+<h2 id="bloc-8-statistique-dun-tableau-de-moyenne">Bloc 8 : statistique d'un tableau de moyenne</h2>
+<p>Ajout des valeurs moyennes dans un tableau et affichage de ce tableau et des valeurs moyennes et écart-type.</p>
+<pre><code class="language-python">Means = []                                          #Création d'un tableau vide des valeurs moyennes
+Means=testSamples(200, 100,dataset['Temp_Min'])     #Ajout des valeurs moyennes dans le tableau avec la fonction testSamples créée précédemment
+print(Means)                                        #Affichage du tableau des valeurs moyennes
+print(np.mean(Means))                               #Affichage de la moyenne du tableau Means
+print(np.mean(dataset['Temp_Min']))                 #Affichage de la moyenne du tableau dataset['Temp_Min']
+print(np.std(Means))                                #Affiche l'écart-type des valeurs du tableau Means
+print(np.std(dataset['Temp_Min']))                  #Affiche l'écart-type des valeurs du tableau dataset['Temp_Min']
+</code></pre>
+<h3 id="bloc-de-la-fonction-associee">Bloc de la fonction associée</h3>
+<p>La fonction <code>testSamples</code> permet de créer des valeurs à partir d'un échantillon et ainsi de les insérer dans un tableau.  </p>
+<pre><code class="language-python">class fonction:                                     #Création de la classe fonction pour toutes les fonctions utilisables pour temp.py
+    def  testSamples(numTrials, sampleSize, data):  #Définition de la fonction testSamples prenant en paramètre numTrials (int), sampleSize (int), data (tableau de float)
+        Means = []                                  #Création d'un tableau vide
+        for t in range(numTrials):                  #Boucle for commençant de 0 allant à numTrials-1 par pas de 1
+            Y=data.sample(sampleSize)               #Y récupère un échantillon aléatoire d'éléments de taille sampleSize
+            Means.append(sum(Y)/len(Y))             #Ajout dans le tabelau de la division de la somme de Y divisé par la longueur de Y
+        return Means                                #On retourne le tableau Means
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 8" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_8-2.png" /></p>
+<h2 id="bloc-9-diagramme-en-escalier">Bloc 9 : diagramme en escalier</h2>
+<p>Création d'un histogramme en escalier.</p>
+<pre><code class="language-python">plt.figure(1)                                   #Création d'une figure avec un unique identifiant égal à 1
+plt.hist(Means, bins=10, histtype='step')       #Création d'un histogramme en escalier avec un seul trait et sans remplissage, avec 10 marches ayant la même largeur
+plt.show()                                      #Affichage du graphique/figure
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 9" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_9.png" /></p>
+<h2 id="bloc-10-test-de-shapiro-wilk">Bloc 10 : test de Shapiro-Wilk</h2>
+<p>Test de Shapiro-Wilk sur une population distribuée normalement.</p>
+<pre><code class="language-python">stat, p = stats.shapiro(Means)                          #On fait le test de Shapiro-Wilk qui vérifie l’hypothèse nulle selon les données de Means, et retourne la valeur de la statistique du test et la p-value pour l'hypothèse du test
+print('Statistics={}, p={}'.format(stat, p))            #Affichage de la statistique et de la p-value
+alpha = 0.05                                            #Iniatialisation de alpha
+if p &gt; alpha:                                           #Test entre p-value et alpha
+    print('Sample looks Normal (do not reject H0)')     #Affichage si p-value &gt; alpha
+else:   
+    print('Sample does not look Normal (reject H0)')    #Affichage si p-value &lt; alpha
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 10" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_10.png" /></p>
+<h2 id="bloc-11-boite-a-moustaches">Bloc 11 : boite à moustaches</h2>
+<p>Diagramme en boites et à moutaches. La boîte s'étend des valeurs du quartile inférieur au quartile supérieur des données, avec une ligne à la médiane. Les moustaches s'étendent à partir de la boîte pour montrer l'étendue des données. Les points de vol sont ceux qui se trouvent après l'extrémité des moustaches.</p>
+<pre><code class="language-python">plt.boxplot(Means)  #Création d'un diagramme en boites et à moustaches de Means
+plt.show()          #Affichage du graphique/figure
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 11" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_11.png" /></p>
+<h2 id="bloc-12-courbe-de-probabilite">Bloc 12 : courbe de probabilité</h2>
+<p>Création et affichage de la courbe de probabilité</p>
+<pre><code class="language-python">stats.probplot(Means, plot=plt) #Calcule les quantiles de la courbe de probabilité normale de Means et la trace avec matplotlib
+plt.show()                      #Affichage du graphique/figure
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 12" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_12.png" /></p>
+<h2 id="bloc-13-coefficient-de-regression">Bloc 13 : coefficient de régression</h2>
+<p>Ecriture par deux manières différentes du calcul du coefficient de régression linéaire.  </p>
+<pre><code class="language-python">X, y = make_classification(n_samples=100, n_features=10, n_informative=10, n_redundant=0, random_state=1) #Paramètrage du nuage de points
+model1 = LogisticRegression()                                                                             #Initialisation de l'évaluation du modèle 1 par la fonction LogisticRegression()
+cv1 = RepeatedStratifiedKFold(n_splits=2, n_repeats=5, random_state=1)                                    #Paramétrage de la variable cv1   
+scores1 = cross_val_score(model1, X, y, scoring='accuracy', cv=cv1, n_jobs=-1)                            #Paramétrage de la variable scores1
+print('LogisticRegression Mean Accuracy: %.3f (%.3f)' % (np.mean(scores1), np.std(scores1)))              #Affichage du coefficient de régression linéaire moyen pour le modèle 1   
+model2 = LinearDiscriminantAnalysis()                                                                     #Initialisation de l'évaluation du modèle 2 par la fonction 
+cv2 = RepeatedStratifiedKFold(n_splits=2, n_repeats=5, random_state=1)                                    #Paramétrage de la variable cv2
+scores2 = cross_val_score(model2, X, y, scoring='accuracy', cv=cv2, n_jobs=-1)                            #Paramétrage de la variable scores2
+print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (np.mean(scores2), np.std(scores2)))      #Affichage du coefficient de régression linéaire moyen pour le modèle 2 
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 13" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_13.png" /></p>
+<h2 id="bloc-14-diagramme-boite-a-moustaches">Bloc 14 : diagramme boite à moustaches</h2>
+<p>Création du diagramme boite à moustaches</p>
+<pre><code class="language-python">plt.boxplot([scores1, scores2], labels=['LR', 'LDA'], showmeans=True)           #Création d'un diagramme boite à moustaches à partir de scores1 et scores2
+plt.show()                                                                      #Affichage du graphique/figure
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 14" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_14.png" /></p>
+<h2 id="bloc-15-test-entre-les-deux-modeles">Bloc 15 : test entre les deux modèles</h2>
+<p>Détermination de la P-value et de T-stastitic pour faire un test entre les deux modèles</p>
+<pre><code class="language-python">t, p = paired_ttest_5x2cv(estimator1=model1, estimator2=model2, X=X, y=y, scoring='accuracy', random_seed=1) #Initialisation du couple de valeurs t et p
+print('P-value: %.3f, t-Statistic: %.3f' % (p, t))                                                           #Affichage de la p-Value et de t-Statistic initialisées ci-dessus
+if p &lt;= 0.05:                                                                                                #Test de la valeur de la variable p
+    print('Difference between mean performance is probably real')                                        #Affichage si p&lt;=0.05
+else:
+    print('Algorithms probably have the same performance')                                               #Affichage si p&gt;0.05
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 15" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_15.png" /></p>
+<h2 id="bloc-16-discriminant">Bloc 16 : discriminant</h2>
+<p>Analyse du discriminant</p>
+<pre><code class="language-python">X = standardize(X)                                                      #Lissage de la variable X
+lda = ldaf(n_discriminants=2)                                           #Initialisation du discriminant
+lda.fit(X, y)                                                           #Entrainement du modèle en utilisant l'ensemble de formation
+X_lda = lda.transform(X)                                                #Transforme les valeurs pour qu'elles soient utilisables par les fonctions d'après
+plt.figure(figsize=(6, 4))                                              #Création d'une figure avec une certaine taille précisée en argument
+for lab, col in zip((0, 1),('blue', 'red')):                            #Boucle pour tracer le nuage de points en fonction de la ligne et de la colonne
+    plt.scatter(X_lda[y == lab, 0],X_lda[y == lab, 1],label=lab,c=col)  #Traçage du nuage de points
+plt.xlabel('Linear Discriminant 1')                                     #Paramètrage du titre de l'axe X
+plt.ylabel('Linear Discriminant 2')                                     #Paramètrage du titre de l'axe Y
+plt.legend(loc='lower right')                                           #Paramètrage de la légende située en bas à droite
+plt.tight_layout()                                                      #Ajustement des bordures entre et autour des sous traces
+plt.show()                                                              #Affichage du graphique/figure
+</code></pre>
+<p>Sortie possible :<br />
+<img alt="Sortie 16" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_16.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../function/" class="btn btn-neutral float-right" title="Les fonctions">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../launch/" class="btn btn-neutral" title="Le programme"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../launch/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../function/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

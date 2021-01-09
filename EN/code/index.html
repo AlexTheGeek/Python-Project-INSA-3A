@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Code explanation - Python Project 3A</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Code explanation";
+    var mkdocs_page_input_path = "EN/code.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Python Project 3A</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">English</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Home</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../objectif/">Objectives</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../python/">Python</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ide/">IDE</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../dependances/">Dependencies</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../launch/">The program</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Code explanation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#block-1-initialisation-of-a-dataframe-from-a-csv-file">Block 1: initialisation of a DataFrame from a csv file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-2-scatter-plot-of-the-temperature-distribution">Block 2: scatter plot of the temperature distribution</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-3-histogram-graph-of-the-max-temperature-distribution">Block 3: histogram graph of the Max temperature distribution</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-4-initialization-of-the-prediction">Block 4: initialization of the prediction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-5-vertical-bar-graph-of-the-distribution-of-predicted-and-measured-values">Block 5: vertical bar graph of the distribution of predicted and measured values</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-6-graph-of-the-regression-line">Block 6: graph of the regression line</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-7-some-values-of-the-prediction">Block 7: some values of the prediction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-8-statistics-from-a-table-of-averages">Block 8: statistics from a table of averages</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#block-of-the-associated-function">Block of the associated function</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-9-step-diagram">Block 9: step diagram</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-10-shapiro-wilk-test">Block 10: Shapiro-Wilk test</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-11-moustache-box">Block 11: moustache box</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-12-probability-curve">Block 12: probability curve</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-13-regression-coefficient">Block 13: regression coefficient</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-14-diagram-moustache-box">Block 14: diagram moustache box</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-15-test-between-the-two-models">Block 15: test between the two models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#block-16-discriminant">Block 16: discriminant</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../function/">Functions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../sources/">Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Français</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/">Accueil</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/objectif/">Objectifs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/python/">Python</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/ide/">IDE</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/dependances/">Dépendances</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/launch/">Le programme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/code/">Explication du code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/function/">Les fonctions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/sources/">Sources</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Python Project 3A</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>English &raquo;</li>
+        
+      
+    
+    <li>Code explanation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="code-explanation">Code explanation</h1>
+<p>In this part we will explain the different actions made by the programme, through blocks of lines of code. In this way we will present an output possible thanks to these lines. You can also find the complete code annotated at this address for the <a href="https://github.com/AlexTheGeek/Python-Project-INSA-3A/blob/doc/Python_EN/main_explications_en.py">main</a> and the <a href="https://github.com/AlexTheGeek/Python-Project-INSA-3A/blob/doc/Python_EN/function_explications_en.py">function</a>.<br />
+First of all our program is composed of two Python scripts :<br />
+    - main.py : containing the body of the programme (python script to be executed to launch the programme)<br />
+    - function.py: containing the function used in main.py  </p>
+<h2 id="block-1-initialisation-of-a-dataframe-from-a-csv-file">Block 1: initialisation of a DataFrame from a csv file</h2>
+<p>Comma-separated data retrieval from a csv file to generate a sample in a random way, and thus display information about this DataFrame (dimension, statistics, memory usage, non-zero values, columns, dtype index, ...).    </p>
+<pre><code class="language-python">dataset1 = pd.read_csv('weather.csv')   #Reading a file (csv) of comma-separated values in a DataFrame
+dataset1.sample()                       #Generating a random sample of each group of an object in the DataFrame
+dataset=dataset1.sample(1000)           #A new DataFrame (dataset) containing 1000 randomly sampled elements from dataset1
+print(dataset.shape)                    #Display of a tuple representing the dimension of the DataFrame dataset
+print(dataset.describe())               #Display of statistics for each type of DataFrame values
+dataset.info()                          #Displays DataFrame information, including dtype index, colonnnes and non-zero values and memory usage.
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 1" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_1.png" /></p>
+<h2 id="block-2-scatter-plot-of-the-temperature-distribution">Block 2: scatter plot of the temperature distribution</h2>
+<p>Display of the temperature distribution as a function of minimum and maximum temperatures in a scatter plot</p>
+<pre><code class="language-python">dataset.plot(x='Temp_Min', y='Temp_Max', style='o') #Creating a DataFrame plot, with the x-axis representing Temp_min and the y-axis representing Temp_Max, in a scatter plot style.
+plt.title('Temp_Min vs Temp_Max')                   #Setting the graph title
+plt.xlabel('Temp_Min')                              #Setting the x-axis title
+plt.ylabel('Temp_Max')                              #Setting the y-axis title
+plt.show()                                          #Graphic/Figure display
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 2" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_2.png" />  </p>
+<h2 id="block-3-histogram-graph-of-the-max-temperature-distribution">Block 3: histogram graph of the Max temperature distribution</h2>
+<p>Creation of a histogram graph to visualize the distribution of the Temp_Max values of the DataFrame</p>
+<pre><code class="language-python">plt.figure(figsize=(15,10))                     #Creation of a figure of a size defined by figsize in inch, 15 inch wide and 10 inch high
+plt.tight_layout()                              #Adjusting the borders between and around the plot
+seabornInstance.distplot(dataset['Temp_Max'])   #Allows you to draw a distribution plot on a FacetGrid, allowing you to view the Temp_Max DataFrame data in a histogram format (default).
+plt.show()                                      #Graphic/Figure display
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 3" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_3.png" /></p>
+<h2 id="block-4-initialization-of-the-prediction">Block 4: initialization of the prediction</h2>
+<p>Predicting Temp_Max from the previous file  </p>
+<pre><code class="language-python">X = dataset['Temp_Min'].values.reshape(-1,1)                                                        #The X value includes the Temp_Min attribute
+y = dataset['Temp_Max'].values.reshape(-1,1)                                                        #The value includes the Temp_Max attribute
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)            #Allocation of 80% of the data to the training set and the rest to the test set
+reg = LinearRegression().fit(X_train, y_train)                                                      #Training of the model using the training set
+print(reg.intercept_)                                                                               #Intersection display 
+print(reg.coef_)                                                                                    #Display of the directing coefficient of the regression line
+y_pred = reg.predict(X_test)                                                                        #Using test data to make predictions about Temp_Max
+df = pd.DataFrame({'Actuelle(Mesurées)': y_test.flatten(), 'Prédiction(modèle)': y_pred.flatten()}) #Building a DataFrame from predicted data and tests
+print(df)                                                                                           #Displaying DataFrame
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 4" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_5.png" /></p>
+<h2 id="block-5-vertical-bar-graph-of-the-distribution-of-predicted-and-measured-values">Block 5: vertical bar graph of the distribution of predicted and measured values</h2>
+<p>Creation of the vertical bar graph showing the distribution of measured and predicted temperatures.  </p>
+<pre><code class="language-python">df1 = df.head(25)                                                       #Retrieving the first 25 lines of df to put them in df1
+df1.plot(kind='bar',figsize=(16,10))                                    #Creation of DataFrame, size 16inch wide and 10inch high, and the style of the graph will be vertical bars
+plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')  #Creation of the internal grid (major) of the graphic with a solid line style, 0.5 points thick, one green colour
+plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')  #Creation of the frame (minor) of the graphic with a dotted line style, 0.5 points thick, one black colour
+plt.show()                                                              #Graphic/Figure display
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 5" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_6.png" /></p>
+<h2 id="block-6-graph-of-the-regression-line">Block 6: graph of the regression line</h2>
+<p>Creation of a scatter plot in grey with the previously calculated regression line in red</p>
+<pre><code class="language-python">plt.title('Modèle ax+y')                            #Setting the chart title
+plt.xlabel('Temp_Min')                              #Setting the x-axis title
+plt.ylabel('Temp_Max')                              #Setting the y-axis title
+plt.scatter(X_test, y_test,  color='gray')          #Creation of a scatter diagram y_test vs. X_test of grey colour
+plt.plot(X_test, y_pred, color='red', linewidth=2)  #CCreation of a DataFrame plot (of the ax+y function), with the x-axis representing the X_Test and the y-axis representing the y_pred, in red colour and 2 points wide.
+plt.show()                                          #Graphic/Figure display
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 6" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_7.png" /></p>
+<h2 id="block-7-some-values-of-the-prediction">Block 7: some values of the prediction</h2>
+<p>Displays values based on predictions</p>
+<pre><code class="language-python">print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))              #Display of the calculation of the mean absolute values of the errors   
+print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))                #Display of mean squared error
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))  #Display of the root mean squared error
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 7" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_8-1.png" /></p>
+<h2 id="block-8-statistics-from-a-table-of-averages">Block 8: statistics from a table of averages</h2>
+<p>Addition of mean values in a table, display of this table and mean values and standard deviation</p>
+<pre><code class="language-python">Means = []                                          #Creation of an empty table of average values
+Means=testSamples(200, 100,dataset['Temp_Min'])     #Adding average values to the table with the previously created testSamples function
+print(Means)                                        #Displaying the mean value table
+print(np.mean(Means))                               #Displaying the average of the Means table
+print(np.mean(dataset['Temp_Min']))                 #Displaying the average of the dataset['Temp_Min'] table
+print(np.std(Means))                                #Displays the standard deviation of the values in the Means table.
+print(np.std(dataset['Temp_Min']))                  #Displays the standard deviation of the values in the dataset['Temp_Min'] table
+</code></pre>
+<h3 id="block-of-the-associated-function">Block of the associated function</h3>
+<p>The <code>testSamples</code> function allows you to create values from a sample and thus insert them into a table.  </p>
+<pre><code class="language-python">class fonction:                                     #Creation of the function class for all functions that can be used for temp.py
+    def testSamples(numTrials, sampleSize, data):  #Définition de la fonction testSamples prenant en paramètre numTrials (int), sampleSize (int), data (tableau de float)
+        Means = []                                  #Definition of the testSamples function taking in parameters numTrials (int), sampleSize (int), data (float array)
+        for t in range(numTrials):                  #Loop for starting from 0 going to numTrials-1 in steps of 
+            Y=data.sample(sampleSize)               #Y retrieves a random sample of elements of size sampleSize
+            Means.append(sum(Y)/len(Y))             #Addition in the table of the division of the sum of Y divided by the length of Y
+        return Means                                #We return the Means table
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 8" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_8-2.png" /></p>
+<h2 id="block-9-step-diagram">Block 9: step diagram</h2>
+<p>Creation of a stepped histogram</p>
+<pre><code class="language-python">plt.figure(1)                                   #Creation of a figure with a unique identifier equal to 1
+plt.hist(Means, bins=10, histtype='step')       #Creation of a stepped histogram with a single line and without filling, with 10 steps of the same width.
+plt.show()                                      #Graphic/Figure display
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 9" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_9.png" /></p>
+<h2 id="block-10-shapiro-wilk-test">Block 10: Shapiro-Wilk test</h2>
+<p>Shapiro-Wilk test on a normally distributed population</p>
+<pre><code class="language-python">stat, p = stats.shapiro(Means)                          #We do the Shapiro-Wilk test which verifies the null hypothesis according to Means' data, and returns the value of the test statistic and the p-value for the test hypothesis.
+print('Statistics={}, p={}'.format(stat, p))            #Display of statistics and p-value
+alpha = 0.05                                            #Initilization of alpha
+if p &gt; alpha:                                           #Test between p-value and alpha
+    print('Sample looks Normal (do not reject H0)')     #Display if p-value &gt; alpha
+else:   
+    print('Sample does not look Normal (reject H0)')    #Display if p-value &lt; alpha
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 10" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_10.png" /></p>
+<h2 id="block-11-moustache-box">Block 11: moustache box</h2>
+<p>A box and whisker plot. The box extends from the values in the lower quartile to the upper quartile of the data, with a line at the median. The whiskers extend from the box to show the extent of the data. Flier points are those past the end of the whiskers.</p>
+<pre><code class="language-python">plt.boxplot(Means)  #Creation of a box and whisker plot
+plt.show()          #Graphic/Figure display
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 11" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_11.png" /></p>
+<h2 id="block-12-probability-curve">Block 12: probability curve</h2>
+<p>Creation and display of the probability curve</p>
+<pre><code class="language-python">stats.probplot(Means, plot=plt) #Calculates the quantiles of the Means normal probability curve and the plot with matplotlib
+plt.show()                      #Graphic/Figure display
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 12" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_12.png" /></p>
+<h2 id="block-13-regression-coefficient">Block 13: regression coefficient</h2>
+<p>Writing the calculation of the linear regression coefficient in two different ways  </p>
+<pre><code class="language-python">X, y = make_classification(n_samples=100, n_features=10, n_informative=10, n_redundant=0, random_state=1) #Setting up the cloud plot
+model1 = LogisticRegression()                                                                             #Initialization of the evaluation of model 1 by the LogisticRegression() function
+cv1 = RepeatedStratifiedKFold(n_splits=2, n_repeats=5, random_state=1)                                    #Setting the variable cv1   
+scores1 = cross_val_score(model1, X, y, scoring='accuracy', cv=cv1, n_jobs=-1)                            #Setting the variable scores1
+print('LogisticRegression Mean Accuracy: %.3f (%.3f)' % (np.mean(scores1), np.std(scores1)))              #Display of the average linear regression coefficient for model 1   
+model2 = LinearDiscriminantAnalysis()                                                                     #Initiation of the evaluation of model 2 by the function 
+cv2 = RepeatedStratifiedKFold(n_splits=2, n_repeats=5, random_state=1)                                    #Setting the cv2 variable
+scores2 = cross_val_score(model2, X, y, scoring='accuracy', cv=cv2, n_jobs=-1)                            #Setting the scores2 variable
+print('LinearDiscriminantAnalysis Mean Accuracy: %.3f (%.3f)' % (np.mean(scores2), np.std(scores2)))      #Display of the average linear regression coefficient for model 2 
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 13" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_13.png" /></p>
+<h2 id="block-14-diagram-moustache-box">Block 14: diagram moustache box</h2>
+<p>Creation of a box and whisker plot</p>
+<pre><code class="language-python">plt.boxplot([scores1, scores2], labels=['LR', 'LDA'], showmeans=True)           #Creation of a box and whisker plot from scores1 and scores2
+plt.show()                                                                      #Graphic/Figure display
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 14" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_14.png" /></p>
+<h2 id="block-15-test-between-the-two-models">Block 15: test between the two models</h2>
+<p>Determination of P-value and T-stastitic for testing between the two models</p>
+<pre><code class="language-python">t, p = paired_ttest_5x2cv(estimator1=model1, estimator2=model2, X=X, y=y, scoring='accuracy', random_seed=1) #Initialization of the value pair t and p
+print('P-value: %.3f, t-Statistic: %.3f' % (p, t))                                                           #Display of the p-Value and t-Statistic initialised above
+if p &lt;= 0.05:                                                                                                #Test of the value of the variable p
+    print('Difference between mean performance is probably real')                                            #Display if p&lt;=0.05
+else:
+    print('Algorithms probably have the same performance')                                                   #Display if p&gt;0.05
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 15" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_15.png" /></p>
+<h2 id="block-16-discriminant">Block 16: discriminant</h2>
+<p>Discriminant analysis</p>
+<pre><code class="language-python">X = standardize(X)                                                      #Smoothing of variable X
+lda = ldaf(n_discriminants=2)                                           #Initialization of the discriminator
+lda.fit(X, y)                                                           #Training the model using the training package
+X_lda = lda.transform(X)                                                #Transforms the values so that they can be used by the following functions
+plt.figure(figsize=(6, 4))                                              #Creation of a figure with a certain size specified as an argument
+for lab, col in zip((0, 1),('blue', 'red')):                            #Loop for plotting the cloud plot according to line and column
+    plt.scatter(X_lda[y == lab, 0],X_lda[y == lab, 1],label=lab,c=col)  #Plotting the cloud plot
+plt.xlabel('Linear Discriminant 1')                                     #Setting x-axis title 
+plt.ylabel('Linear Discriminant 2')                                     #Setting y-axis title 
+plt.legend(loc='lower right')                                           #Setting the legend on the bottom right-hand side
+plt.tight_layout()                                                      #Adjusting the borders between and around the undercuts
+plt.show()                                                              #Graphic/Figure display
+</code></pre>
+<p>Possible output:<br />
+<img alt="Sortie 16" src="https://raw.githubusercontent.com/AlexTheGeek/Python-Project-INSA-3A/doc/Sorties/Sortie_16.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../function/" class="btn btn-neutral float-right" title="Functions">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../launch/" class="btn btn-neutral" title="The program"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../launch/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../function/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

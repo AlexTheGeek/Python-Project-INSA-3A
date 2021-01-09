@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Functions - Python Project 3A</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Functions";
+    var mkdocs_page_input_path = "EN/function.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Python Project 3A</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">English</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Home</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../objectif/">Objectives</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../python/">Python</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ide/">IDE</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../dependances/">Dependencies</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../launch/">The program</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/">Code explanation</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Functions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pandas">pandas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pandasread_csvfilepath">pandas.read_csv(’filepath’)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pandasdataframesamplennone">pandas.DataFrame.sample(n=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pandasdataframeshape">pandas.DataFrame.shape</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pandasdataframedescribepercentilesnone">pandas.DataFrame.describe(percentiles=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pandasdataframeinfo">pandas.DataFrame.info()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pandasdataframeplotxnone-ynone-stylenone">pandas.DataFrame.plot(x=None, y=None, style=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pandasdataframevalues">pandas.DataFrame.values()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pandasdataframesamplennone_1">pandas.DataFrame.sample(n=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pandasdataframeheadn5">pandas.DataFrame.head(n=5)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pandasdataframedatanone">pandas.DataFrame(data=None)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#matplotlib">matplotlib</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplottitlelabel">matplotlib.pyplot.title(label)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplotxlabellabel">matplotlib.pyplot.xlabel(label)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplotylabellabel">matplotlib.pyplot.ylabel(label)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplotshow-blocknone">matplotlib.pyplot.show(*, block=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplotfigurenumnonefigsizenone">matplotlib.pyplot.figure(num=None,figsize=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplottight_layoutpad108">matplotlib.pyplot.tight_layout(pad=1.08)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplotgridwhichma-jorkwargs">matplotlib.pyplot.grid(which=’ma jor’,**kwargs)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplotscatterxycnonekwargs">matplotlib.pyplot.scatter(x,y,c=None,**kwargs)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplotplotxy-kwargs">matplotlib.pyplot.plot(x,y, **kwargs)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplothistx-binsnone-histtypebar">matplotlib.pyplot.hist(x, bins=None, histtype=’bar’)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplotboxx-labelsnone-showmeansnone">matplotlib.pyplot.box(x, labels=None, showmeans=None)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#seaborn">seaborn</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#searborndisplotdatanone">searborn.displot(data=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matplotlibpyplotgridargskwargs">matplotlib.pyplot.grid(args,*kwargs)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sklearn">sklearn</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#sklearnmodel_selectiontrain_test_splitarrays-test_sizenone-random_statenone">sklearn.model_selection.train_test_split(*arrays, test_size=None, random_state=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sklearnmodellinear_modellinearregressionfitxy">sklearn.model.linear_model.LinearRegression().fit(X,Y)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sklearnmodellinear_modellinearregressionfitintercept_">sklearn.model.linear_model.LinearRegression().fit().intercept_</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sklearnmodellinear_modellinearregressionfitcoef_">sklearn.model.linear_model.LinearRegression().fit().coef_</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sklearnmodellinear_modellinearregressionfitpredictx">sklearn.model.linear_model.LinearRegression().fit().predict(X)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sklearnmetricsmean_absolute_errory_true-y_pred">sklearn.metrics.mean_absolute_error(y_true, y_pred)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sklearnmetricsmean_squared_errory_true-y_pred">sklearn.metrics.mean_squared_error(y_true, y_pred)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sklearndatasetsmake_classificationn_samples100-n_features20-n_informative2-n_redundant2-random_statenone">sklearn.datasets.make_classification(n_samples=100, n_features=20, n_informative=2, n_redundant=2, random_state=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sklearnmodel_selectionrepeatedstratifiedkfoldn_splits5-n_repeats10-random_statenone">sklearn.model_selection.RepeatedStratifiedKFold(n_splits=5, n_repeats=10, random_state=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sklearnmodel_selectioncross_val_scoreestimator-x-ynone-scoringnone-cvnone-n_jobsnone">sklearn.model_selection.cross_val_score(estimator, X, y=None, scoring=None, cv=None, n_jobs=None)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#numpy">numpy</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#numpysqrtx">numpy.sqrt(x)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#numpymeana">numpy.mean(a)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#numpystda">numpy.std(a)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#scipy">scipy</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#scipystatsshapirox">scipy.stats.shapiro(x)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scipystatsprobplotx-plotnone">scipy.stats.probplot(x, plot=None)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mlxtend">mlxtend</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#mlxtendevaluatepaired_ttest_5x2cvestimator1-estimator2-x-y-scoringnone-ran-dom_seednone">mlxtend.evaluate.paired_ttest_5x2cv(estimator1, estimator2, X, y, scoring=None, ran- dom_seed=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mlxtendpreprocessingstandardizearray">mlxtend.preprocessing.standardize(array)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mlxtendfeature_extractionlineardiscriminantanalysisn_discriminantsnone">mlxtend.feature_extraction.LinearDiscriminantAnalysis(n_discriminants=None)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mlxtendfeature_extractionlineardiscriminantanalysisfitxy">mlxtend.feature_extraction.LinearDiscriminantAnalysis().fit(X,y)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mlxtendfeature_extractionlineardiscriminantanalysistransformx">mlxtend.feature_extraction.LinearDiscriminantAnalysis().transform(X)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../sources/">Sources</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Français</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/">Accueil</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/objectif/">Objectifs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/python/">Python</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/ide/">IDE</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/dependances/">Dépendances</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/launch/">Le programme</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/code/">Explication du code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/function/">Les fonctions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FR/sources/">Sources</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Python Project 3A</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>English &raquo;</li>
+        
+      
+    
+    <li>Functions</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="functions">Functions</h1>
+<p>In this section we will detail the parameters taken by each of the functions of each of the libraries.</p>
+<h2 id="pandas">pandas</h2>
+<h3 id="pandasread_csvfilepath">pandas.read_csv(’filepath’)</h3>
+<p>Reading a csv file containing comma-separated values in a DataFrame. <br />
+Parameter</p>
+<ul>
+<li>filepath : str, path object  <blockquote>
+<blockquote>
+<p>Any path (absolute path or relative path (current directory)) or even URL is accepted.  </p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="pandasdataframesamplennone">pandas.DataFrame.sample(n=None)</h3>
+<p>Returns a random sample of elements from a DataFrame (object axis).  <br />
+Parameter </p>
+<ul>
+<li>n : int<blockquote>
+<blockquote>
+<p>Number of items to be returned. Default value is 1. </p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="pandasdataframeshape">pandas.DataFrame.shape</h3>
+<p>Returns a tuple representing the dimension of the DataFrame.  </p>
+<h3 id="pandasdataframedescribepercentilesnone">pandas.DataFrame.describe(percentiles=None)</h3>
+<p>Returns the value of each quartile.  <br />
+Parameter  </p>
+<ul>
+<li>percentiles : number list<blockquote>
+<blockquote>
+<p>Quartiles to be included in the output. The default value [0.25, 0.5, 0.75] representing the first quartile, median and third quartile if applicable.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="pandasdataframeinfo">pandas.DataFrame.info()</h3>
+<p>Displaying DataFrame information.<br />
+Parameter</p>
+<ul>
+<li>data : DataFrame<blockquote>
+<blockquote>
+<p>Display information about this DataFrame.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="pandasdataframeplotxnone-ynone-stylenone">pandas.DataFrame.plot(x=None, y=None, style=None)</h3>
+<p>Creation of a DataFrame plot.<br />
+Parameters</p>
+<ul>
+<li>
+<p>data : DataFrame</p>
+<blockquote>
+<blockquote>
+<p>The object for which the method is called.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>x : str, label</p>
+<blockquote>
+<blockquote>
+<p>Label of the abscissa axis. Used only if it is a DataFrame.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>y : str, label</p>
+<blockquote>
+<blockquote>
+<p>Y-axis label. Used only if it is a DataFrame.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>style : str</p>
+<blockquote>
+<blockquote>
+<p>Style of the display of the points on the graph, by default all the points are connected. <br />
+‘.‘ : dot, dot marker.<br />
+‘o‘ : circle dot, circular marker.<br />
+‘v‘ : low triangular point, low triangular marker.<br />
+‘&lt;‘ : left triangle point, left triangle marker.<br />
+‘&gt;‘ : right triangular point, right triangular marker.<br />
+‘s‘ : square dot, square marker.  </p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>kind : str, label</p>
+<blockquote>
+<blockquote>
+<p>The type of graph to be displayed.<br />
+‘line‘ : line graph (default). <br />
+‘bar‘ : vertical bar graph.  </p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>figsize : (int, int)</p>
+<blockquote>
+<blockquote>
+<p>Size of the figure.<br />
+Width, height in inches.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="pandasdataframevalues">pandas.DataFrame.values()</h3>
+<p>Returns a Numpy representation of the DataFrame.  </p>
+<h3 id="pandasdataframesamplennone_1">pandas.DataFrame.sample(n=None)</h3>
+<p>Returns a sample of n elements.<br />
+Parameter</p>
+<ul>
+<li>n : int<blockquote>
+<blockquote>
+<p>Number of items to be returned.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="pandasdataframeheadn5">pandas.DataFrame.head(n=5)</h3>
+<p>Returns the first n elements.<br />
+Parameter </p>
+<ul>
+<li>n : int<blockquote>
+<blockquote>
+<p>Number of items to be returned.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="pandasdataframedatanone">pandas.DataFrame(data=None)</h3>
+<p>Returns a two-dimensional table of variable size (DataFrame).<br />
+Parameter</p>
+<ul>
+<li>data : ndarray, DataFrame, dict<blockquote>
+<blockquote>
+<p>The data to form the table (DataFrame)</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="matplotlib">matplotlib</h2>
+<h3 id="matplotlibpyplottitlelabel">matplotlib.pyplot.title(label)</h3>
+<p>Sets the title of the chart.<br />
+Parameter</p>
+<ul>
+<li>label : str<blockquote>
+<blockquote>
+<p>Text used for the title.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="matplotlibpyplotxlabellabel">matplotlib.pyplot.xlabel(label)</h3>
+<p>Sets the title of the x-axis of the graph.<br />
+Parameter</p>
+<ul>
+<li>label : str<blockquote>
+<blockquote>
+<p>Text used for the title of the axis.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="matplotlibpyplotylabellabel">matplotlib.pyplot.ylabel(label)</h3>
+<p>Sets the title of the Y-axis of the graph.<br />
+Parameter  </p>
+<ul>
+<li>label : str<blockquote>
+<blockquote>
+<p>Text used for the title of the axis.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="matplotlibpyplotshow-blocknone">matplotlib.pyplot.show(*, block=None)</h3>
+<p>Display of all figures.<br />
+Parameter</p>
+<ul>
+<li>block : bool<blockquote>
+<blockquote>
+<p>default to True.
+If True, the main loop is stopped until all windows are closed. If it is False, all windows are opened immediately.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="matplotlibpyplotfigurenumnonefigsizenone">matplotlib.pyplot.figure(num=None,figsize=None)</h3>
+<p>Creation of a new figure.<br />
+Parameters</p>
+<ul>
+<li>
+<p>figsize : (float,float)</p>
+<blockquote>
+<blockquote>
+<p>default (6.4, 4.8).<br />
+width, high in inch.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>num : int</p>
+<blockquote>
+<blockquote>
+<p>unique identifier of the figure.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="matplotlibpyplottight_layoutpad108">matplotlib.pyplot.tight_layout(pad=1.08)</h3>
+<p>Adjustment of the borders between and around the underlays.<br />
+Parameter</p>
+<ul>
+<li>pad : float<blockquote>
+<blockquote>
+<p>default 1.08.
+Space between the edge of the figure and the edge of the line.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="matplotlibpyplotgridwhichma-jorkwargs">matplotlib.pyplot.grid(which=’ma jor’,**kwargs)</h3>
+<p>Define the properties of the lines in the graph.<br />
+Parameters</p>
+<ul>
+<li>
+<p>label : ’major’, ’minor’, ’both’</p>
+<blockquote>
+<blockquote>
+<p>The grid lines on which to apply the changes.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>**kwargs : Toutes les propriétés des Line2D de matplotlib linestyle : ’-’, ’–’, ’-.’, ’:’</p>
+<blockquote>
+<blockquote>
+<p>linewidth : float.<br />
+color : the name of the colour.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="matplotlibpyplotscatterxycnonekwargs">matplotlib.pyplot.scatter(x,y,c=None,**kwargs)</h3>
+<p>Scatter diagram of y vs x with different colours.<br />
+Parameters</p>
+<ul>
+<li>
+<p>x : float or array-like</p>
+<blockquote>
+<blockquote>
+<p>Position of the data in x.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>y : float or array-like </p>
+<blockquote>
+<blockquote>
+<p>Position of the data in y.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>c : array-like or colour list </p>
+<blockquote>
+<blockquote>
+<p>The colour of the dots on the graph.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>**kargs : Additional properties </p>
+<blockquote>
+<blockquote>
+<p>color : the name of the colour.<br />
+label : list or str, labels for legendary elements. </p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="matplotlibpyplotplotxy-kwargs">matplotlib.pyplot.plot(x,y, **kwargs)</h3>
+<p>Graph of y vs x.<br />
+Parameters</p>
+<ul>
+<li>
+<p>x : array-like</p>
+<blockquote>
+<blockquote>
+<p>Horizontal coordinates.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>y : array-like </p>
+<blockquote>
+<blockquote>
+<p>Vertical coordinates.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>**kwargs : All the properties of Line2D from matplotlib </p>
+<blockquote>
+<blockquote>
+<p>color : the name of the colour.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="matplotlibpyplothistx-binsnone-histtypebar">matplotlib.pyplot.hist(x, bins=None, histtype=’bar’)</h3>
+<p>Histogram graph.<br />
+Parameters</p>
+<ul>
+<li>
+<p>x : array-like</p>
+<blockquote>
+<blockquote>
+<p>Input values.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>bins : int</p>
+<blockquote>
+<blockquote>
+<p>Definition of the number of strips of the same width on the graph.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>histtype : ’bar’, ’barstacked’, ’step’, ’stepfilled’, default: ’bar’ </p>
+<blockquote>
+<blockquote>
+<p>Type of histogram to be plotted.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="matplotlibpyplotboxx-labelsnone-showmeansnone">matplotlib.pyplot.box(x, labels=None, showmeans=None)</h3>
+<p>Graphic in moustache box.<br />
+Parameters</p>
+<ul>
+<li>
+<p>x : array-like</p>
+<blockquote>
+<blockquote>
+<p>Input values.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>labels : sequence</p>
+<blockquote>
+<blockquote>
+<p>Label for each data set.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>showmeans : bool, default False </p>
+<blockquote>
+<blockquote>
+<p>Average arthimetic.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="seaborn">seaborn</h2>
+<h3 id="searborndisplotdatanone">searborn.displot(data=None)</h3>
+<p>Adjustment of the borders between and around the underlays.<br />
+Parameter</p>
+<ul>
+<li>data : pandas.DataFrame, numpy.ndarray <blockquote>
+<blockquote>
+<p>Input data structure.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="matplotlibpyplotgridargskwargs">matplotlib.pyplot.grid(<em>args,</em>*kwargs)</h3>
+<p>Place a legend on the axes.<br />
+Parameter</p>
+<ul>
+<li>**kwargs : All properties on the legends <blockquote>
+<blockquote>
+<p>loc : str, position of the legend.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="sklearn">sklearn</h2>
+<h3 id="sklearnmodel_selectiontrain_test_splitarrays-test_sizenone-random_statenone">sklearn.model_selection.train_test_split(*arrays, test_size=None, random_state=None)</h3>
+<p>Divide the matrix or table into training and test subsets.<br />
+Parameters</p>
+<ul>
+<li>
+<p>*arrays : sequence of indexables with same length</p>
+<blockquote>
+<blockquote>
+<p>Allowed inputs are lists, numpy arrays, scipy-sparse matrices or pandas dataframes.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>test_size : float ou int</p>
+<blockquote>
+<blockquote>
+<p>If float, should be between 0.0 and 1.0 and represent the proportion of the dataset to include in the test split.
+If int, represents the absolute number of test samples. If None, the value is set to the complement of the train size.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>random_state : float ou int</p>
+<blockquote>
+<blockquote>
+<p>Controls the shuffling applied to the data before applying the split. Pass an int for reproducible output across multiple function calls.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="sklearnmodellinear_modellinearregressionfitxy">sklearn.model.linear_model.LinearRegression().fit(X,Y)</h3>
+<p>Linear model training. <br />
+Parameters</p>
+<ul>
+<li>
+<p>X : array-like</p>
+<blockquote>
+<blockquote>
+<p>Training data.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>Y : array-like</p>
+<blockquote>
+<blockquote>
+<p>Target values.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="sklearnmodellinear_modellinearregressionfitintercept_">sklearn.model.linear_model.LinearRegression().fit().intercept_</h3>
+<p>Returns the intersection of the model.</p>
+<h3 id="sklearnmodellinear_modellinearregressionfitcoef_">sklearn.model.linear_model.LinearRegression().fit().coef_</h3>
+<p>Returns the direct coefficient of the regression line.</p>
+<h3 id="sklearnmodellinear_modellinearregressionfitpredictx">sklearn.model.linear_model.LinearRegression().fit().predict(X)</h3>
+<p>Predict using the linear model. <br />
+Parameter</p>
+<ul>
+<li>X : array-like<blockquote>
+<blockquote>
+<p>A valuable sample.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="sklearnmetricsmean_absolute_errory_true-y_pred">sklearn.metrics.mean_absolute_error(y_true, y_pred)</h3>
+<p>Average loss by absolute error regression.<br />
+Parameters</p>
+<ul>
+<li>
+<p>y_true : array-like</p>
+<blockquote>
+<blockquote>
+<p>Basic target value.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>y_pred : array-like </p>
+<blockquote>
+<blockquote>
+<p>Estimated target values.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="sklearnmetricsmean_squared_errory_true-y_pred">sklearn.metrics.mean_squared_error(y_true, y_pred)</h3>
+<p>Average loss of regression by mean squared error.  <br />
+Parameters</p>
+<ul>
+<li>
+<p>y_true : array-like</p>
+<blockquote>
+<blockquote>
+<p>Basic target value.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>y_pred : array-like </p>
+<blockquote>
+<blockquote>
+<p>Estimated target values.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="sklearndatasetsmake_classificationn_samples100-n_features20-n_informative2-n_redundant2-random_statenone">sklearn.datasets.make_classification(n_samples=100, n_features=20, n_informative=2, n_redundant=2, random_state=None)</h3>
+<p>Generate a random class n classification system.  <br />
+Parameters</p>
+<ul>
+<li>
+<p>n_samples : int</p>
+<blockquote>
+<blockquote>
+<p>Number of samples.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>n_features : int</p>
+<blockquote>
+<blockquote>
+<p>The total number of elements.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>n_informative : int</p>
+<blockquote>
+<blockquote>
+<p>Number of information items.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>n_redundant : int</p>
+<blockquote>
+<blockquote>
+<p>Number of redundant elements.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>random_state : int</p>
+<blockquote>
+<blockquote>
+<p>Determines the generation of random numbers for the creation of a data set.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="sklearnmodel_selectionrepeatedstratifiedkfoldn_splits5-n_repeats10-random_statenone">sklearn.model_selection.RepeatedStratifiedKFold(n_splits=5, n_repeats=10, random_state=None)</h3>
+<p>Repeated Stratified K-Fold cross validator.<br />
+Parameters</p>
+<ul>
+<li>
+<p>n_splits : int</p>
+<blockquote>
+<blockquote>
+<p>Number of folds.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>n_repeats : int</p>
+<blockquote>
+<blockquote>
+<p>Number of times cross-validator needs to be repeated</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>random_state : int</p>
+<blockquote>
+<blockquote>
+<p>Controls the generation of the random states for each repetition.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="sklearnmodel_selectioncross_val_scoreestimator-x-ynone-scoringnone-cvnone-n_jobsnone">sklearn.model_selection.cross_val_score(estimator, X, y=None, scoring=None, cv=None, n_jobs=None)</h3>
+<p>Evaluate a score by cross-validation.<br />
+Parameters</p>
+<ul>
+<li>
+<p>estimator : estimator object implementing fit</p>
+<blockquote>
+<blockquote>
+<p>The object to use to fit the data.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>X : array-like</p>
+<blockquote>
+<blockquote>
+<p>The data to fit.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>y : array-like</p>
+<blockquote>
+<blockquote>
+<p>The target variable to try to predict in the case of supervised learning.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>scoring : str</p>
+<blockquote>
+<blockquote>
+<p>Object pointer.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>cv : int</p>
+<blockquote>
+<blockquote>
+<p>Determines the cross-validation splitting strategy. Specifies the number of folds in the <code>(Stratified)KFold</code>.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>n_jobs : int</p>
+<blockquote>
+<blockquote>
+<p>Number of tasks to be managed in the background/parallel.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="numpy">numpy</h2>
+<h3 id="numpysqrtx">numpy.sqrt(x)</h3>
+<p>Returns the non-negative square root of one table per element.<br />
+Parameter</p>
+<ul>
+<li>x : array-like, float, int<blockquote>
+<blockquote>
+<p>Value below the square root that is required.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="numpymeana">numpy.mean(a)</h3>
+<p>Returns the average of the table.<br />
+Parameter</p>
+<ul>
+<li>a : array-like<blockquote>
+<blockquote>
+<p>Table containing the values to be averaged.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="numpystda">numpy.std(a)</h3>
+<p>Returns the standard deviation of a table.<br />
+Parameter</p>
+<ul>
+<li>a : array-like<blockquote>
+<blockquote>
+<p>Table containing the values for which the standard deviation is desired.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="scipy">scipy</h2>
+<h3 id="scipystatsshapirox">scipy.stats.shapiro(x)</h3>
+<p>Realization of the Shapiro-Wilk test on a data table. Returns the test statistic (float) and the p-value (float).<br />
+Parameter</p>
+<ul>
+<li>x : array-like, float, int<blockquote>
+<blockquote>
+<p>Data table to do the test.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="scipystatsprobplotx-plotnone">scipy.stats.probplot(x, plot=None)</h3>
+<p>Calculate quartiles for a probability curve (by default normal probability), and possibly plot the curve.<br />
+Parameters</p>
+<ul>
+<li>
+<p>x : array-like, float, int</p>
+<blockquote>
+<blockquote>
+<p>Data table to make the graph.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>plot : object</p>
+<blockquote>
+<blockquote>
+<p>Plots the quantiles and least squares fit.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="mlxtend">mlxtend</h2>
+<h3 id="mlxtendevaluatepaired_ttest_5x2cvestimator1-estimator2-x-y-scoringnone-ran-dom_seednone">mlxtend.evaluate.paired_ttest_5x2cv(estimator1, estimator2, X, y, scoring=None, ran- dom_seed=None)</h3>
+<p>Implements the 5x2cv twin t-test proposed by Dieterrich (1998) to compare the performance of two models. Returns the t-statistic and the p-value.<br />
+Parameters</p>
+<ul>
+<li>
+<p>estimator1 : regressor </p>
+</li>
+<li>
+<p>estimator2 : regressor </p>
+</li>
+<li>
+<p>X : array-like</p>
+<blockquote>
+<blockquote>
+<p>Training values. </p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>y : array-like</p>
+<blockquote>
+<blockquote>
+<p>Target values.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>scoring : str, accuracy, f1, precision, recall, roc_auc</p>
+<blockquote>
+<blockquote>
+<p>sklearn scoring metric string identifier. </p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>random_seed : int</p>
+<blockquote>
+<blockquote>
+<p>Random number for the creation of trial/train sequences.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="mlxtendpreprocessingstandardizearray">mlxtend.preprocessing.standardize(array)</h3>
+<p>Standardize columns in Pandas DataFrame (Table).<br />
+Parameter</p>
+<ul>
+<li>array : array-like <blockquote>
+<blockquote>
+<p>Pandas DataFrame.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="mlxtendfeature_extractionlineardiscriminantanalysisn_discriminantsnone">mlxtend.feature_extraction.LinearDiscriminantAnalysis(n_discriminants=None)</h3>
+<p>Linear discriminant analysis class.<br />
+Parameter</p>
+<ul>
+<li>n_discriminants : int<blockquote>
+<blockquote>
+<p>The number of discriminating for transformation.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="mlxtendfeature_extractionlineardiscriminantanalysisfitxy">mlxtend.feature_extraction.LinearDiscriminantAnalysis().fit(X,y)</h3>
+<p>Fit the LDA model with X.  <br />
+Parameters</p>
+<ul>
+<li>X : array-like<blockquote>
+<blockquote>
+<p>Training values.</p>
+</blockquote>
+</blockquote>
+</li>
+<li>y : array-like<blockquote>
+<blockquote>
+<p>Target values.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="mlxtendfeature_extractionlineardiscriminantanalysistransformx">mlxtend.feature_extraction.LinearDiscriminantAnalysis().transform(X)</h3>
+<p>Application of the linear transformation on X. <br />
+Parameter</p>
+<ul>
+<li>X : array-like<blockquote>
+<blockquote>
+<p>Training values.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../sources/" class="btn btn-neutral float-right" title="Sources">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../code/" class="btn btn-neutral" title="Code explanation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../code/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../sources/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
