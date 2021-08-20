@@ -6,4 +6,4 @@
 [Damien Briquet](https://github.com/DamingoPy) and [Alexis Brunet](https://github.com/AlexTheGeek)
 
 ## Contact :
-contact[at]lapinfo[dot]ovh
+contact[at]lapinfo[dot]fr
